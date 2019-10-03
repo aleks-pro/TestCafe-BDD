@@ -1,0 +1,41 @@
+{
+  "name": "testcafepractice",
+  "version": "1.0.0",
+  "description": "",
+  "publishConfig": {
+    "registry": "",
+    "access": "public"
+  },
+  "private": true,
+  "dependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/register": "^7.6.2",
+    "@types/node": "11.13.7",
+    "babel-eslint": "^10.0.3",
+    "base64-img": "^1.0.4",
+    "callsite-record": "^4.1.3",
+    "cucumber": "^5.1.0",
+    "del": "^5.1.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "generator-testcafe-reporter": "^2.2.0",
+    "gherkin-testcafe": "2.2.0",
+    "multiple-cucumber-html-reporter": "latest",
+    "testcafe": "^1.1.0",
+    "testcafe-react-selectors": "3.0.0",
+    "testcafe-reporter-cucumber-json": "latest",
+    "typescript": "3.4.5",
+    "yup": "^0.27.0"
+  },
+  "scripts": {
+    "testcafe": "gherkin-testcafe \"chrome:C:/Program Files (x86)/Google/Chrome/Application/chrome.exe\" e2e/**/*.js e2e/**/*.feature --tags @tcpractice --require-module @babel/register --hostname localhost --ports 1337,1338 --proxy proxy-dev.discoverfinancial.com:8080 --screenshots target/reports --reporter cucumber-json:target/reports/report.json --app-init-delay 10000 --page-load-timeout 10000 --selector-timeout 10000 --assertion-timeout 10000",
+    "report": "node report-generator.js",
+    "test": "./node_modules/.bin/cucumber-js.cmd e2e/**/*.feature --require e2e/**/*.js --tags @tcpractice -f json:./reports/cucumber_report.json --app-init-delay 10000 --page-load-timeout 10000 --selector-timeout 10000 --assertion-timeout 10000",
+    "html-report": "npm run report",
+    "testnreport": "npm run test && npm run report"
+  },
+  "author": "Prasanna Kamatkar"
+}
